@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
 
 @RestController
 @RequestMapping("rating")
@@ -33,9 +32,5 @@ public ResponseDto<RatingDto> update(@RequestBody RatingDto dto,@PathVariable(va
 @DeleteMapping("/delete/{id}")
 public ResponseDto<RatingDto> delete(@PathVariable(value = "id") Integer id){
     return this.ratingService.delete(id);
-}
-@GetMapping("/get-by-centre/{id}")
-public ResponseDto<Set<RatingDto>> getRatingByCentreId(@PathVariable(value = "id") Integer id){
-    return this.ratingService.getRatingByCentreId(id);
 }
 }

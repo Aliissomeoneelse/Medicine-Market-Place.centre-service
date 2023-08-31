@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -105,6 +106,10 @@ public class RatingService {
     }
 
     public ResponseDto<Set<RatingDto>> getRatingByCentreId(Integer id) {
-        return null;
+        return ResponseDto.<Set<RatingDto>>builder()
+                .message("Ok")
+                .success(true)
+                .data(ratingRepository.findAllByCentreIdAndDeletedAtIsNull(id).stream().map(ratingMapper::toDto).collect(Collectors.toSet()))
+                .build();
     }
 }
