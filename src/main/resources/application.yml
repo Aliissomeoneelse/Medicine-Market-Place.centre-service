@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: centre-service
+  cloud:
+    config:
+      uri: http://localhost:8888/
+      label: dev/Alisher
+  config:
+    import: optional:configserver:http://localhost:8888/
+  jpa:
+    properties:
+      jakarta.persistence.validation.mode: none
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true
+
